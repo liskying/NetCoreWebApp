@@ -3,6 +3,9 @@
 
     "dependencies": {
         "Microsoft.NETCore.App": {
+            //发布配置
+            //"version": "1.0.1"
+            //开发配置
             "version": "1.0.1",
             "type": "platform"
         },
@@ -39,8 +42,6 @@
             "version": "1.0.0-preview2-update1",
             "type": "build"
         },
-        //"MySql.Data.Core": "7.0.4-ir-191",
-        //"MySql.Data.EntityFrameworkCore": "7.0.6-ir31"
         "Pomelo.Data.MySql": "1.0.0",
         "Pomelo.EntityFrameworkCore.MySql": "1.0.0"
     },
@@ -113,4 +114,14 @@
     "tooling": {
         "defaultNamespace": "WebApplication"
     }
+    /*,
+    //发布配置
+    "runtimes":{
+        "win7-x64": { },
+        "win7-x86": { },
+        "win10-x64": { },
+        "win10-x86": { },
+        "ubuntu.16.04-x64":{ }
+    }
+    */
 }
