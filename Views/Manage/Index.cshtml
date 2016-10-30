@@ -1,4 +1,4 @@
-@model IndexViewModel
+﻿@model IndexViewModel
 @{
     ViewData["Title"] = "Manage your account";
 }
@@ -7,10 +7,10 @@
 <p class="text-success">@ViewData["StatusMessage"]</p>
 
 <div>
-    <h4>Change your account settings</h4>
+    <h4>账户信息修改</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>Password:</dt>
+        <dt>密码设置:</dt>
         <dd>
             @if (Model.HasPassword)
             {
@@ -21,17 +21,17 @@
                 <a asp-controller="Manage" asp-action="SetPassword" class="btn-bracketed">Create</a>
             }
         </dd>
-        <dt>External Logins:</dt>
+        <dt>扩展登录:</dt>
         <dd>
 
             @Model.Logins.Count <a asp-controller="Manage" asp-action="ManageLogins" class="btn-bracketed">Manage</a>
         </dd>
-        <dt>Phone Number:</dt>
+        <dt>电话号码:</dt>
         <dd>
             <p>
-                Phone Numbers can used as a second factor of verification in two-factor authentication.
-                See <a href="https://go.microsoft.com/fwlink/?LinkID=532713">this article</a>
-                for details on setting up this ASP.NET application to support two-factor authentication using SMS.
+                电话号码可以作为两个因素认证的验证的第二个因素.
+                See <a href="http://go.microsoft.com/fwlink/?LinkID=532713">this article</a>
+                有关设置ASP.NET应用使用短信支持双因素认证的细节.
             </p>
             @*@(Model.PhoneNumber ?? "None")
                 @if (Model.PhoneNumber != null)
@@ -51,7 +51,7 @@
         <dt>Two-Factor Authentication:</dt>
         <dd>
             <p>
-                There are no two-factor authentication providers configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532713">this article</a>
+                没有两个因素身份验证提供程序配置,请见 <a href="http://go.microsoft.com/fwlink/?LinkID=532713">这篇文章</a>
                 for setting up this application to support two-factor authentication.
             </p>
             @*@if (Model.TwoFactor)

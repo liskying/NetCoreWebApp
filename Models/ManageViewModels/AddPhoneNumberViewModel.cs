@@ -10,7 +10,7 @@ namespace WebApplication.Models.ManageViewModels
     {
         [Required]
         [Phone]
-        [Display(Name = "Phone number")]
+        [Display(Name = "电话号码")]
         public string PhoneNumber { get; set; }
     }
 }

@@ -1,19 +1,19 @@
-@model ExternalLoginConfirmationViewModel
+﻿@model ExternalLoginConfirmationViewModel
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "注册";
 }
 
 <h2>@ViewData["Title"].</h2>
-<h3>Associate your @ViewData["LoginProvider"] account.</h3>
+<h3>联系账号 @ViewData["LoginProvider"] account.</h3>
 
 <form asp-controller="Account" asp-action="ExternalLoginConfirmation" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
-    <h4>Association Form</h4>
+    <h4>联系表单</h4>
     <hr />
     <div asp-validation-summary="All" class="text-danger"></div>
 
     <p class="text-info">
-        You've successfully authenticated with <strong>@ViewData["LoginProvider"]</strong>.
-        Please enter an email address for this site below and click the Register button to finish
+        您已经成功地验证<strong>@ViewData["LoginProvider"]</strong>
+        请输入下面的这个网站的用户名，然后单击“注册”按钮完成.
         logging in.
     </p>
     <div class="form-group">
@@ -25,7 +25,7 @@
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <button type="submit" class="btn btn-default">Register</button>
+            <button type="submit" class="btn btn-default">注册</button>
         </div>
     </div>
 </form>

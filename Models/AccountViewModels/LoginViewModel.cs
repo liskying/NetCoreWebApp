@@ -8,15 +8,17 @@ namespace WebApplication.Models.AccountViewModels
 {
     public class LoginViewModel
     {
+        [Display(Name = "账号[邮箱]")]
         [Required]
         [EmailAddress]
         public string Email { get; set; }
 
+        [Display(Name = "密码")]
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "记住我?")]
         public bool RememberMe { get; set; }
     }
 }

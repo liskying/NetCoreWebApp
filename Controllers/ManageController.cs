@@ -35,18 +35,21 @@ namespace WebApplication.Controllers
             _logger = loggerFactory.CreateLogger<ManageController>();
         }
 
-        //
-        // GET: /Manage/Index
+        /// <summary>
+        /// 账号管理.首页
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> Index(ManageMessageId? message = null)
         {
             ViewData["StatusMessage"] =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
-                : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
-                : message == ManageMessageId.Error ? "An error has occurred."
-                : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
-                : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                message == ManageMessageId.ChangePasswordSuccess ? "您的密码已经修改."
+                : message == ManageMessageId.SetPasswordSuccess ? "您那的密码已经设置."
+                : message == ManageMessageId.SetTwoFactorSuccess ? "您的双因素身份验证提供程序已被设置."
+                : message == ManageMessageId.Error ? "发生了一个错误."
+                : message == ManageMessageId.AddPhoneSuccess ? "您的电话号码被添加."
+                : message == ManageMessageId.RemovePhoneSuccess ? "您的电话号码被删除."
                 : "";
 
             var user = await GetCurrentUserAsync();
@@ -61,8 +64,11 @@ namespace WebApplication.Controllers
             return View(model);
         }
 
-        //
-        // POST: /Manage/RemoveLogin
+        /// <summary>
+        /// 移除登录
+        /// </summary>
+        /// <param name="account"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RemoveLogin(RemoveLoginViewModel account)
@@ -81,15 +87,20 @@ namespace WebApplication.Controllers
             return RedirectToAction(nameof(ManageLogins), new { Message = message });
         }
 
-        //
-        // GET: /Manage/AddPhoneNumber
+        /// <summary>
+        /// 获取新增号码页面
+        /// </summary>
+        /// <returns></returns>
         public IActionResult AddPhoneNumber()
         {
             return View();
         }
 
-        //
-        // POST: /Manage/AddPhoneNumber
+        /// <summary>
+        /// 添加新增号码
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddPhoneNumber(AddPhoneNumberViewModel model)
@@ -105,8 +116,10 @@ namespace WebApplication.Controllers
             return RedirectToAction(nameof(VerifyPhoneNumber), new { PhoneNumber = model.PhoneNumber });
         }
 
-        //
-        // POST: /Manage/EnableTwoFactorAuthentication
+        /// <summary>
+        /// 启用双重验证方式
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EnableTwoFactorAuthentication()
@@ -121,8 +134,10 @@ namespace WebApplication.Controllers
             return RedirectToAction(nameof(Index), "Manage");
         }
 
-        //
-        // POST: /Manage/DisableTwoFactorAuthentication
+        /// <summary>
+        /// 禁用双重验证方式
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DisableTwoFactorAuthentication()
@@ -137,8 +152,11 @@ namespace WebApplication.Controllers
             return RedirectToAction(nameof(Index), "Manage");
         }
 
-        //
-        // GET: /Manage/VerifyPhoneNumber
+        /// <summary>
+        /// 获取验证号码页面
+        /// </summary>
+        /// <param name="phoneNumber"></param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> VerifyPhoneNumber(string phoneNumber)
         {
@@ -147,8 +165,11 @@ namespace WebApplication.Controllers
             return phoneNumber == null ? View("Error") : View(new VerifyPhoneNumberViewModel { PhoneNumber = phoneNumber });
         }
 
-        //
-        // POST: /Manage/VerifyPhoneNumber
+        /// <summary>
+        /// 验证号码
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> VerifyPhoneNumber(VerifyPhoneNumberViewModel model)
@@ -172,8 +193,10 @@ namespace WebApplication.Controllers
             return View(model);
         }
 
-        //
-        // POST: /Manage/RemovePhoneNumber
+        /// <summary>
+        /// 移除号码
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RemovePhoneNumber()
@@ -191,16 +214,21 @@ namespace WebApplication.Controllers
             return RedirectToAction(nameof(Index), new { Message = ManageMessageId.Error });
         }
 
-        //
-        // GET: /Manage/ChangePassword
+        /// <summary>
+        /// 获取密码修改页面
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult ChangePassword()
         {
             return View();
         }
 
-        //
-        // POST: /Manage/ChangePassword
+        /// <summary>
+        /// 修改密码
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
@@ -225,16 +253,21 @@ namespace WebApplication.Controllers
             return RedirectToAction(nameof(Index), new { Message = ManageMessageId.Error });
         }
 
-        //
-        // GET: /Manage/SetPassword
+        /// <summary>
+        /// 获取设置密码页面
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult SetPassword()
         {
             return View();
         }
 
-        //
-        // POST: /Manage/SetPassword
+        /// <summary>
+        /// 设置密码
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SetPassword(SetPasswordViewModel model)
@@ -259,7 +292,11 @@ namespace WebApplication.Controllers
             return RedirectToAction(nameof(Index), new { Message = ManageMessageId.Error });
         }
 
-        //GET: /Manage/ManageLogins
+        /// <summary>
+        /// 获取登录管理页面
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> ManageLogins(ManageMessageId? message = null)
         {

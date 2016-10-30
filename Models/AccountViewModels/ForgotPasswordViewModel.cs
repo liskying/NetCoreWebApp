@@ -8,6 +8,7 @@ namespace WebApplication.Models.AccountViewModels
 {
     public class ForgotPasswordViewModel
     {
+        [Display(Name = "邮箱")]
         [Required]
         [EmailAddress]
         public string Email { get; set; }

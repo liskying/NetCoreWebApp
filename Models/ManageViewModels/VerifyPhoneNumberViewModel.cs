@@ -8,12 +8,13 @@ namespace WebApplication.Models.ManageViewModels
 {
     public class VerifyPhoneNumberViewModel
     {
+        [Display(Name = "验证码")]
         [Required]
         public string Code { get; set; }
 
         [Required]
         [Phone]
-        [Display(Name = "Phone number")]
+        [Display(Name = "电话号码")]
         public string PhoneNumber { get; set; }
     }
 }
